@@ -1,0 +1,130 @@
+/*
+색상 출처: [Apple Developer 색상 가이드](https://developer.apple.com/kr/design/human-interface-guidelines/color)
+*/
+
+:root {
+  --radius: 2rem;
+  --letter: #f2f2f7;
+  --muted: #8e8e93;
+  --line: 1px solid #2c2c2e;
+  --block: #1c1c1e;
+  --bg: #0d0d0d;
+  --accent: #0091ff;
+}
+
+body {
+  background: var(--bg);
+  color: var(--letter);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 2.5rem;
+}
+
+.layout > header, nav, footer {
+  background: var(--block);
+  border-radius: var(--radius);
+}
+
+nav {
+  padding: 0.5rem;
+}
+
+nav ul {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  list-style: none;
+  margin: auto;
+  padding: 0;
+}
+
+nav a {
+  border: var(--line);
+  border-radius: 1.25rem;
+  color: inherit;
+  display: block;
+  padding: 0.4rem 1.25rem;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background: var(--accent);
+  transition: background-color 0.5s ease, transform 0.5s ease;
+}
+
+main {
+  padding: 1rem 1.25rem;
+}
+
+section iframe {
+  border: 0;
+  height: 60vh;
+  min-height: 420px;
+  width: 100%;
+}
+
+footer {
+  color: var(--muted);
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border-bottom: var(--line);
+  padding: 0.5rem 0.4rem;
+  text-align: left;
+}
+
+tbody tr:hover {
+  background: var(--accent);
+  transition: background-color 0.5s ease, transform 0.5s ease;
+}
+
+.grid {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  padding: 0.25rem;
+}
+
+.grid > a {
+  background: var(--block);
+  border: var(--line);
+  border-radius: 0.5rem;
+  color: inherit;
+  display: block;
+  padding: 0.75rem 0.5rem 0.6rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.grid > a:hover {
+  background: var(--accent);
+  transition: background-color 0.5s ease, transform 0.5s ease;
+}
+
+.grid > #gh {
+  font-size: 1.35rem;
+  font-weight: 800;
+  grid-column: 1 / -1;
+}
+
+.grid > a > p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-style: italic;
+  font-weight: 400;
+  margin: 0.25rem 0 0;
+}

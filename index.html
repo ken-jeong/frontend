@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend Programming Archive</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="topbar" aria-label="Main navigation">
+      <a class="brand" href="index.html">Frontend Archive</a>
+      <div class="nav-links">
+        <a href="hw01_250924/home.html">HW01</a>
+        <a href="hw02_251106/home.html">HW02</a>
+        <a href="hw03_251203/dist/">HW03</a>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <p class="eyebrow">2025 Frontend Programming</p>
+      <h1>프론트엔드 과제 아카이브</h1>
+      <p class="hero-copy">
+        HTML, CSS, JavaScript, React 실습 결과물을 한 곳에서 확인할 수 있는 메인 페이지입니다.
+      </p>
+      <a class="primary-link" href="#assignments">과제 보기</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro" aria-label="Overview">
+      <div>
+        <span class="section-label">Overview</span>
+        <h2>학습 흐름</h2>
+      </div>
+      <p>
+        기본 웹 문서 작성부터 동적 인터랙션과 React 컴포넌트 구성까지, 과제별 결과물을 순서대로 정리했습니다.
+      </p>
+    </section>
+
+    <section class="assignments" id="assignments" aria-label="Assignments">
+      <article class="assignment-card">
+        <div class="card-image hw01" role="img" aria-label="HTML and CSS assignment preview"></div>
+        <div class="card-body">
+          <p class="card-kicker">HW01</p>
+          <h2>개인 홈페이지</h2>
+          <p>소개, 관심사, 학습 내용을 iframe 기반 레이아웃으로 구성한 첫 번째 정적 페이지입니다.</p>
+          <a href="hw01_250924/home.html">열기</a>
+        </div>
+      </article>
+
+      <article class="assignment-card">
+        <div class="card-image hw02" role="img" aria-label="JavaScript assignment preview"></div>
+        <div class="card-body">
+          <p class="card-kicker">HW02</p>
+          <h2>JavaScript 문제 풀이</h2>
+          <p>여러 문제 페이지를 탐색하며 JavaScript 기본 문법과 DOM 활용 결과를 확인합니다.</p>
+          <a href="hw02_251106/home.html">열기</a>
+        </div>
+      </article>
+
+      <article class="assignment-card">
+        <div class="card-image hw03" role="img" aria-label="React assignment preview"></div>
+        <div class="card-body">
+          <p class="card-kicker">HW03</p>
+          <h2>React 애플리케이션</h2>
+          <p>라우팅, 컴포넌트, API 요청, 계산기와 검색 기능을 포함한 Vite 기반 React 과제입니다.</p>
+          <a href="hw03_251203/dist/">열기</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Frontend Programming Archive</p>
+  </footer>
+</body>
+</html>
