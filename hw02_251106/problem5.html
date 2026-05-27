@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Problem 5</title>
+  <link type="text/css" rel="stylesheet" href="home.css">
+</head>
+
+<body>
+  <h4 id="hint">
+    async와 await 문법을 사용하여 서버 URL(URL)로부터 JSON 형식의 student 데이터를 받아 filter 메서드를 사용하여 2024학번만 필터링합니다.<br>
+    그리고 필터링된 student 데이터를 학번(snum) 속성을 기준으로 오름차순으로 정렬하여 동적 테이블을 작성합니다.<br>
+    최종적으로 table 요소를 id가 target인 요소에 자식 요소로 추가합니다.<br>
+  </h4>
+
+  <button class="hint" onClick="sendRequest()">정렬된 2024학번 Student 테이블 생성</button>
+  <div id="target"></div>
+
+  <script>
+    async function sendRequest() {
+      try {
+        const resp = await fetch("URL");
+        const data = await resp.json();
+
+        // filter
+        const filteredData = (Array.isArray(data) ? data : []).filter(s =>
+          s && s.snum !== undefined && String(s.snum).startsWith("2024")
+        );
+
+        // sort
+        const sortedData = filteredData.sort((a, b) =>
+          String(a.snum).localeCompare(String(b.snum), 'en', { numeric: true })
+        );
+
+        const target = document.getElementById("target");
+        const table = document.createElement("table");
+        const thead = document.createElement("thead");
+        const tbody = document.createElement("tbody");
+
+        const columns = Object.keys(sortedData[0]);
+
+        // thead
+        const headTr = document.createElement("tr");
+        columns.forEach(col => {
+          const th = document.createElement("th");
+          th.textContent = col;
+          headTr.appendChild(th);
+        });
+        thead.appendChild(headTr);
+
+        // tbody
+        sortedData.forEach(row => {
+          const tr = document.createElement("tr");
+          columns.forEach(col => {
+            const td = document.createElement("td");
+            const val = row[col];
+            td.textContent = (val !== null && typeof val === "object") ? JSON.stringify(val) : (val ?? "");
+            tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        });
+
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        target.appendChild(table);
+      } catch (err) {
+        alert("failure-실패");
+        console.error(err);
+      }
+    }
+  </script>
+</body>
+
+</html>

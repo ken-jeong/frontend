@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Problem 4</title>
+  <link type="text/css" rel="stylesheet" href="home.css">
+</head>
+
+<body>
+  <h4 id="hint">
+    fetch 함수를 사용하여 서버 URL(URL)로부터 JSON 형식의 student 데이터를 받아 DOM 노드의 생성과 추가를 통해 동적 테이블을 작성합니다.<br>
+    반복문을 통해 각 row 요소에 포함되는 td 요소들을 생성하고(createElement), row 요소의 자식으로 추가(appendChild)합니다.<br>
+    그리고 table 요소에 row 요소를 자식 요소로 추가합니다.<br>
+    최종적으로 table 요소를 id가 target인 요소에 자식 요소로 추가합니다.<br>
+  </h4>
+  
+  <button class="hint" onClick="sendRequest()">Student 테이블 생성</button>
+  <div id="target"></div>
+
+  <script>
+    function sendRequest() {
+      fetch("URL")
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(response.status);
+          }
+          return response.json();
+        })
+        .then(data => {
+          let div = document.getElementById("target");
+          const table = document.createElement("table");
+          const thead = document.createElement("thead");
+          const tbody = document.createElement("tbody");
+
+          // thead
+          const headerRow = document.createElement("tr");
+          const columns = Object.keys(data[0]);
+          columns.forEach(col => {
+            const th = document.createElement("th");
+            th.textContent = col;
+            headerRow.appendChild(th);
+          });
+          thead.appendChild(headerRow);
+
+          // tbody
+          data.forEach(item => {
+            const tr = document.createElement("tr");
+            columns.forEach(col => {
+              const td = document.createElement("td");
+              const value = item[col];
+              td.textContent = (value !== null && typeof value === "object")
+                ? JSON.stringify(value)
+                : (value ?? "");
+              tr.appendChild(td);
+            });
+            tbody.appendChild(tr);
+          });
+
+          table.appendChild(thead);
+          table.appendChild(tbody);
+          div.appendChild(table);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  </script>
+</body>
+
+</html>
